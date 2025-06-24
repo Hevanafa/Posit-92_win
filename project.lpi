@@ -53,6 +53,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Bitmap"/>
       </Unit>
+      <Unit>
+        <Filename Value="units\timing.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Timing"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

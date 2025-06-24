@@ -8,7 +8,7 @@ implementation
 
 uses
   SDL2,
-  Bitmap, Keyboard, VGA;
+  Bitmap, Keyboard, Timing, VGA;
 
 var
   done: boolean;
@@ -20,6 +20,7 @@ procedure INIT;
 begin
   initVGAMode;
   { loadFont; }
+  initDeltaTime;
   initKeyHandler;
   { TODO: Define the Timing unit }
 
