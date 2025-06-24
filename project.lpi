@@ -38,6 +38,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Main"/>
       </Unit>
+      <Unit>
+        <Filename Value="units\vga.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="VGA"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

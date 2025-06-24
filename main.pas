@@ -6,15 +6,23 @@ procedure Posit92;
 
 implementation
 
-uses SDL2;
+uses SDL2, VGA;
 
 var
-  window: PSDL_Window;
-  renderer: PSDL_Renderer;
   keyboardState: PUInt8;
 
   done: boolean;
   { More of your game state here }
+
+procedure INIT;
+begin
+  initVGAMode;
+  { initKeyHandler; }
+
+  randomize;
+
+
+end;
 
 procedure update;
 begin
@@ -28,25 +36,16 @@ end;
 
 procedure draw;
 begin
-  SDL_SetRenderDrawColor(renderer, $64, $95, $ED, SDL_ALPHA_OPAQUE);
-  SDL_RenderClear(renderer);
+  cls($7B);
 
   { Your drawing code here }
 
-  SDL_RenderPresent(renderer);
+  flush;
 end;
 
 procedure Posit92;
 begin
-  if SDL_Init(SDL_INIT_VIDEO) < 0 then halt(1);
-
-  window := SDL_CreateWindow('Hello SDL', 100, 100, 320, 200, SDL_WINDOW_SHOWN);
-  if window = nil then halt(1);
-
-  renderer := SDL_CreateRenderer(window, 1, 0);
-  if renderer = nil then halt(1);
-
-  SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, 'nearest');
+  INIT;
 
   keyboardState := SDL_GetKeyboardState(nil);
 
@@ -58,7 +57,6 @@ begin
   until done;
 
   SDL_Quit
-
 end;
 
 end.
