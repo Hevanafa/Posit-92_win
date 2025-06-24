@@ -43,6 +43,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="VGA"/>
       </Unit>
+      <Unit>
+        <Filename Value="units\keyboard.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Keyboard"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

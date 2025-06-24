@@ -6,22 +6,20 @@ procedure Posit92;
 
 implementation
 
-uses SDL2, VGA;
+uses
+  SDL2,
+  Keyboard, VGA;
 
 var
-  keyboardState: PUInt8;
-
   done: boolean;
   { More of your game state here }
 
 procedure INIT;
 begin
   initVGAMode;
-  { initKeyHandler; }
+  initKeyHandler;
 
   randomize;
-
-
 end;
 
 procedure update;
@@ -30,7 +28,7 @@ begin
 
   { Your update code here }
 
-  if keyboardState[SDL_SCANCODE_ESCAPE] = 1 then
+  if isKeyDown(SDL_SCANCODE_ESCAPE) then
     done := true;
 end;
 
@@ -46,8 +44,6 @@ end;
 procedure Posit92;
 begin
   INIT;
-
-  keyboardState := SDL_GetKeyboardState(nil);
 
   done := false;
   repeat
