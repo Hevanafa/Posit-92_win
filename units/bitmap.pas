@@ -14,7 +14,7 @@ type
   end;
 
 procedure loadImage(var output: PImage; const filename: string);
-{ procedure spr(const image: PImage; const x, y: integer); }
+procedure spr(const image: PImage; const x, y: integer);
 procedure freeImage(var image: PImage);
 
 
@@ -29,9 +29,24 @@ begin
   SDL_QueryTexture(output^.texture, nil, nil, @output^.width, @output^.height);
 end;
 
-{ procedure spr(const image: PImage; const x, y: integer); }
+procedure spr(const image: PImage; const x, y: integer);
+var
+  dstRect: TSDL_Rect;
+begin
+  if image = nil then exit;
+
+  dstRect.x := x;
+  dstRect.y := y;
+  dstRect.w := image^.width;
+  dstRect.h := image^.height;
+
+  SDL_RenderCopy(renderer, image^.texture, nil, @dstRect);
+end;
+
 procedure freeImage(var image: PImage);
 begin
+  if image = nil then exit;
+
   SDL_DestroyTexture(image^.texture);
   freeMem(image, sizeof(TImage));
   image := nil

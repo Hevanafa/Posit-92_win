@@ -42,7 +42,10 @@ begin
   cls($7B);
 
   { Your drawing code here }
+  spr(DosuEXE[0], 148, 76);
+
   { TODO: Print hello world with VGA font }
+
 
   flush;
 end;
