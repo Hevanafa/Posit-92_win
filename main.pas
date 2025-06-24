@@ -12,6 +12,7 @@ uses
 
 var
   done: boolean;
+  t: double;
   DosuEXE: array[0..1] of PImage;
   { More of your game state here }
 
@@ -20,15 +21,17 @@ begin
   initVGAMode;
   { loadFont; }
   initKeyHandler;
+  { TODO: Define the Timing unit }
 
   randomize;
   loadImage(DosuEXE[0], 'IMG\DOSU_1.BMP');
   loadImage(DosuEXE[1], 'IMG\DOSU_2.BMP');
-  { TODO: Load the mascot image }
 end;
 
 procedure update;
 begin
+  updateDeltaTime;
+  
   SDL_PumpEvents;
 
   { Your update code here }
@@ -42,6 +45,8 @@ begin
   cls($7B);
 
   { Your drawing code here }
+
+  { TODO: Make this animated }
   spr(DosuEXE[0], 148, 76);
 
   { TODO: Print hello world with VGA font }
