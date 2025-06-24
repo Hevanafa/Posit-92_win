@@ -17,9 +17,11 @@ var
 procedure INIT;
 begin
   initVGAMode;
+  { loadFont; }
   initKeyHandler;
 
   randomize;
+  { TODO: Load the mascot image }
 end;
 
 procedure update;
@@ -37,6 +39,7 @@ begin
   cls($7B);
 
   { Your drawing code here }
+  { TODO: Print hello world with VGA font }
 
   flush;
 end;
@@ -51,6 +54,8 @@ begin
     draw;
     SDL_Delay(16);
   until done;
+
+  { Your cleanup code here }
 
   SDL_Quit
 end;

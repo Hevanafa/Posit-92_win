@@ -48,6 +48,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Keyboard"/>
       </Unit>
+      <Unit>
+        <Filename Value="units\bitmap.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Bitmap"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

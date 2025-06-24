@@ -2,18 +2,18 @@ unit VGA;
 
 interface
 
+uses SDL2;
+
+var
+  window: PSDL_Window;
+  renderer: PSDL_Renderer;
+
 procedure initVGAMode;
 procedure cls(const colour: byte);
 procedure flush;
 
 
 implementation
-
-uses SDL2;
-
-var
-  window: PSDL_Window;
-  renderer: PSDL_Renderer;
 
 procedure initVGAMode;
 begin
@@ -30,6 +30,7 @@ end;
 
 procedure cls(const colour: byte);
 begin
+  { TODO: Provide the VGA colour table }
   SDL_SetRenderDrawColor(renderer, $64, $95, $ED, SDL_ALPHA_OPAQUE);
   SDL_RenderClear(renderer);
 end;
