@@ -19,7 +19,7 @@ procedure initVGAMode;
 begin
   if SDL_Init(SDL_INIT_VIDEO) < 0 then halt(1);
 
-  window := SDL_CreateWindow('Hello SDL', 100, 100, 320, 200, SDL_WINDOW_SHOWN);
+  window := SDL_CreateWindow('Hello Posit-92 with SDL!', 100, 100, 320, 200, SDL_WINDOW_SHOWN);
   if window = nil then halt(1);
 
   renderer := SDL_CreateRenderer(window, 1, 0);
