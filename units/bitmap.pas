@@ -25,13 +25,16 @@ uses
 
 procedure loadImage(var output: PImage; const filename: string);
 begin
+  if not FileExists(filename) then
+    writeLn(format('loadImage: File not found: "%s"', [filename]));
+
   if output = nil then
     getMem(output, sizeof(TImage));
 
   output^.texture := IMG_LoadTexture(sdlRenderer, PChar(filename));
   if output^.texture = nil then begin
     { TODO: Implement the Panic unit }
-    writeLn(format('loadImage: Error when loading %s', [filename]));
+    writeLn(format('loadImage: Couldn''t load "%s"!', [filename]));
     exit
   end;
 
