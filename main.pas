@@ -32,7 +32,6 @@ procedure update;
 begin
   updateDeltaTime;
   pollEvents;
-  updateMouse;
 
   { TODO: Your update code here }
 
