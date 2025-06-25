@@ -8,7 +8,7 @@ implementation
 
 uses
   SysUtils, SDL2,
-  Bitmap, Conv, Events, Keyboard, Timing, VGA;
+  Bitmap, Conv, Events, Keyboard, Mouse, Timing, VGA;
 
 var
   t: double;
@@ -21,7 +21,7 @@ begin
   loadFont;
   initDeltaTime;
   initKeyHandler;
-  { initMouse }
+  initMouse;
 
   randomize;
   loadImage(DosuEXE[0], 'IMG\DOSU_1.PNG');
@@ -32,6 +32,7 @@ procedure update;
 begin
   updateDeltaTime;
   pollEvents;
+  updateMouse;
 
   { TODO: Your update code here }
 
@@ -53,7 +54,7 @@ begin
     spr(DosuEXE[1], 148, 76);
 
   print('Hello world!', 160-48, 120, 15);
-  { drawMouse; }
+  drawMouse;
 
   {
   print('t: ' + f32str(t), 0, 0, 15);
