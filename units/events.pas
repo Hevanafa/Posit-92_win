@@ -14,14 +14,22 @@ procedure pollEvents;
 
 implementation
 
+{ TODO: Abstract the implementations for:
+  - Keyboard events
+  - Window events
+  - Mouse events
+}
 procedure pollEvents;
 begin
   { updateKeyboard }
   { updateMouse }
 
   while SDL_PollEvent(@sdlEvent) <> 0 do begin
-    if sdlEvent.type_ = SDL_QUITEV then
+    case sdlEvent.type_ of
+    SDL_QUITEV:
       done := true;
+
+    end;
   end;
 end;
 
