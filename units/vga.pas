@@ -11,7 +11,9 @@ procedure initVGAMode;
 procedure loadFont;
 procedure freeFont;
 
-procedure cls(const colour: byte);
+procedure cls(const colour: byte); overload;
+procedure cls(const r, g, b: byte); overload;
+procedure cls(const rgba: longint); overload;
 procedure print(const text: string; const x, y: integer; const colour: byte);
 { procedure pset(const x, y: integer; const colour: byte); }
 
@@ -46,10 +48,28 @@ begin
   freeImage(font8x8)
 end;
 
-procedure cls(const colour: byte);
+procedure cls(const colour: byte); overload;
 begin
   { TODO: Provide the VGA colour table }
   SDL_SetRenderDrawColor(sdlRenderer, $64, $95, $ED, SDL_ALPHA_OPAQUE);
+  SDL_RenderClear(sdlRenderer);
+end;
+
+procedure cls(const r, g, b: byte); overload;
+begin
+  SDL_SetRenderDrawColor(sdlRenderer, r, g, b, SDL_ALPHA_OPAQUE);
+  SDL_RenderClear(sdlRenderer);
+end;
+
+procedure cls(const rgba: longint); overload;
+var
+  r, g, b, a: byte;
+begin
+  r := rgba shr 24;
+  g := rgba shr 16 mod 256;
+  b := rgba shr 8 mod 256;
+  a := rgba mod 256;
+  SDL_SetRenderDrawColor(sdlRenderer, r, g, b, a);
   SDL_RenderClear(sdlRenderer);
 end;
 
