@@ -8,7 +8,9 @@ function isKeyDown(const scancode: word): boolean;
 
 implementation
 
-uses SDL2;
+uses
+  SDL2,
+  Events;
 
 var
   keys: PUInt8;

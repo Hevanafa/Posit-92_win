@@ -8,10 +8,9 @@ implementation
 
 uses
   SDL2,
-  Bitmap, Keyboard, Timing, VGA;
+  Bitmap, Events, Keyboard, Timing, VGA;
 
 var
-  done: boolean;
   t: double;
   DosuEXE: array[0..1] of PImage;
   { More of your game state here }
@@ -32,10 +31,7 @@ end;
 procedure update;
 begin
   updateDeltaTime;
-  { updateKeyboard }
-  { updateMouse }
-  
-  SDL_PumpEvents;
+  pollEvents;
 
   { TODO: Your update code here }
 
