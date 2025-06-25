@@ -19,7 +19,9 @@ procedure freeImage(var image: PImage);
 
 implementation
 
-uses Renderer;
+uses
+  SysUtils,
+  Renderer;
 
 procedure loadImage(var output: PImage; const filename: string);
 begin
@@ -27,7 +29,15 @@ begin
     getMem(output, sizeof(TImage));
 
   output^.texture := IMG_LoadTexture(sdlRenderer, PChar(filename));
+  if output^.texture = nil then begin
+    { TODO: Implement the Panic unit }
+    writeLn(format('loadImage: Error when loading %s', [filename]));
+    exit
+  end;
+
   SDL_QueryTexture(output^.texture, nil, nil, @output^.width, @output^.height);
+
+  writeLn(format('Loaded "%s"', [filename]))
 end;
 
 procedure spr(const image: PImage; const x, y: integer);

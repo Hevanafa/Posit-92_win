@@ -56,8 +56,6 @@ begin
   else
     spr(DosuEXE[1], 148, 76);
 
-  spr(font8x8, 0, 0);
-
   print('Hello world!', 160-48, 120, 15);
   { drawMouse; }
 
@@ -79,6 +77,7 @@ begin
   { TODO: Your cleanup code here }
   freeImage(DosuEXE[0]);
   freeImage(DosuEXE[1]);
+  freeFont;
 
   SDL_Quit
 end;
