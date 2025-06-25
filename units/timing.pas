@@ -2,8 +2,12 @@ unit Timing;
 
 interface
 
+uses
+  SysUtils;
+
 var
   dt, lastTime, newTime: double; { in seconds }
+  { lastTime, newTime: TDateTime; }
 
 procedure Limit(const fps: integer);
 procedure initDeltaTime;
@@ -13,12 +17,11 @@ procedure updateDeltaTime;
 implementation
 
 uses
-  SDL2,
-  SysUtils, DateUtils;
+  SDL2;
 
 function getTimer: double;
 begin
-  getTimer := Now
+  getTimer := frac(Now) * 86400
 end;
 
 { Similar to QB64's _LIMIT }
