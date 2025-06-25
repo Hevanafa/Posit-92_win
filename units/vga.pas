@@ -9,6 +9,8 @@ var
 
 procedure initVGAMode;
 procedure loadFont;
+procedure freeFont;
+
 procedure cls(const colour: byte);
 procedure print(const text: string; const x, y: integer; const colour: byte);
 { procedure pset(const x, y: integer; const colour: byte); }
@@ -36,7 +38,12 @@ end;
 
 procedure loadFont;
 begin
-  loadImage(font8x8, 'CP437.PNG')
+  loadImage(font8x8, 'IMG\CP437.PNG')
+end;
+
+procedure freeFont;
+begin
+  freeImage(font8x8)
 end;
 
 procedure cls(const colour: byte);
