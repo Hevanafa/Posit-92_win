@@ -19,7 +19,7 @@ var
 procedure INIT;
 begin
   initVGAMode;
-  { loadFont; }
+  loadFont;
   initDeltaTime;
   initKeyHandler;
   { initMouse }
@@ -56,9 +56,11 @@ begin
   else
     spr(DosuEXE[1], 148, 76);
 
+  spr(font8x8, 0, 0);
 
   { TODO: Print hello world with VGA font }
-
+  print('Hello world!', 160-48, 120, 15);
+  { drawMouse; }
 
   flush;
 end;

@@ -3,8 +3,7 @@ unit Bitmap;
 interface
 
 uses
-  SDL2, SDL2_Image,
-  VGA;
+  SDL2, SDL2_Image;
 
 type
   PImage = ^TImage;

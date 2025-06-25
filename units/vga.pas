@@ -2,18 +2,28 @@ unit VGA;
 
 interface
 
-uses SDL2;
+uses
+  SDL2,
+  Bitmap;
 
 var
   window: PSDL_Window;
   renderer: PSDL_Renderer;
+  font8x8: PImage;
 
 procedure initVGAMode;
+procedure loadFont;
 procedure cls(const colour: byte);
+procedure print(const text: string; const x, y: integer; const colour: byte);
+{ procedure pset(const x, y: integer; const colour: byte); }
+
 procedure flush;
 
 
 implementation
+
+uses Bitmap;
+
 
 procedure initVGAMode;
 begin
@@ -28,6 +38,11 @@ begin
   SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, 'nearest');
 end;
 
+procedure loadFont;
+begin
+  loadImage(font8x8, 'CP437.PNG')
+end;
+
 procedure cls(const colour: byte);
 begin
   { TODO: Provide the VGA colour table }
@@ -38,6 +53,28 @@ end;
 procedure flush;
 begin
   SDL_RenderPresent(renderer);
+end;
+
+procedure print(const text: string; const x, y: integer; const colour: byte);
+var
+  a, charcode: word;
+  srcRect, destRect: TSDL_Rect;
+begin
+  for a:=1 to length(text) do begin
+    charcode := ord(text[a]);
+
+    srcRect.x := (charcode mod 16) * 8;
+    srcRect.y := (charcode div 16) * 8;
+    srcRect.w := 8;
+    srcRect.h := 8;
+
+    destRect.x := x + a * 8;
+    destRect.y := y;
+    destRect.w := 8;
+    destRect.h := 8;
+
+    SDL_RenderCopy(renderer, font8x8^.texture, @srcRect, @destRect)
+  end;
 end;
 
 end.
