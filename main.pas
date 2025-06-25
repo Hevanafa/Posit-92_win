@@ -22,33 +22,40 @@ begin
   { loadFont; }
   initDeltaTime;
   initKeyHandler;
-  { TODO: Define the Timing unit }
+  { initMouse }
 
   randomize;
-  loadImage(DosuEXE[0], 'IMG\DOSU_1.BMP');
-  loadImage(DosuEXE[1], 'IMG\DOSU_2.BMP');
+  loadImage(DosuEXE[0], 'IMG\DOSU_1.PNG');
+  loadImage(DosuEXE[1], 'IMG\DOSU_2.PNG');
 end;
 
 procedure update;
 begin
   updateDeltaTime;
+  { updateKeyboard }
+  { updateMouse }
   
   SDL_PumpEvents;
 
-  { Your update code here }
+  { TODO: Your update code here }
 
   if isKeyDown(SDL_SCANCODE_ESCAPE) then
     done := true;
+
+  t:=t+dt
 end;
 
 procedure draw;
 begin
   cls($7B);
 
-  { Your drawing code here }
+  { TODO: Your drawing code here }
 
-  { TODO: Make this animated }
-  spr(DosuEXE[0], 148, 76);
+  if (trunc(t * 1.5) and 1) = 0 then
+    spr(DosuEXE[0], 148, 76)
+  else
+    spr(DosuEXE[1], 148, 76);
+
 
   { TODO: Print hello world with VGA font }
 
@@ -59,6 +66,7 @@ end;
 procedure Posit92;
 begin
   INIT;
+  t:=0;
 
   done := false;
   repeat
@@ -67,7 +75,7 @@ begin
     SDL_Delay(16);
   until done;
 
-  { Your cleanup code here }
+  { TODO: Your cleanup code here }
   freeImage(DosuEXE[0]);
   freeImage(DosuEXE[1]);
 
