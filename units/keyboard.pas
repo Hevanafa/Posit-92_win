@@ -3,6 +3,7 @@ unit Keyboard;
 interface
 
 procedure initKeyHandler;
+procedure resetKeyHandler;
 function isKeyDown(const scancode: word): boolean;
 
 
@@ -24,7 +25,13 @@ end;
 
 function isKeyDown(const scancode: word): boolean;
 begin
+  if not keyboardInitialised then exit;
   isKeyDown := (keys[scancode] = 1)
+end;
+
+procedure resetKeyHandler;
+begin
+  keyboardInitialised := false
 end;
 
 end.

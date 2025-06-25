@@ -13,7 +13,7 @@ uses
 var
   t: double;
   DosuEXE: array[0..1] of PImage;
-  { More of your game state here }
+  { TODO: More of your game state here }
 
 procedure INIT;
 begin
@@ -22,6 +22,8 @@ begin
   initDeltaTime;
   initKeyHandler;
   initMouse;
+
+  { TODO: Your init code here }
 
   randomize;
   loadImage(DosuEXE[0], 'IMG\DOSU_1.PNG');
@@ -78,8 +80,10 @@ begin
   { TODO: Your cleanup code here }
   freeImage(DosuEXE[0]);
   freeImage(DosuEXE[1]);
-  freeFont;
 
+  resetMouse;
+  resetKeyHandler;
+  freeFont;
   initTextMode;
 
   SDL_Quit
