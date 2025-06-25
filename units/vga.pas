@@ -7,7 +7,10 @@ uses SDL2, Bitmap;
 var
   font8x8: PImage;
 
+{ TODO: Implement render scaling 2x2 }
+
 procedure initVGAMode;
+procedure initTextMode;
 procedure loadFont;
 procedure freeFont;
 
@@ -36,6 +39,12 @@ begin
   if sdlRenderer = nil then halt(1);
 
   SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, 'nearest');
+end;
+
+procedure initTextMode;
+begin
+  SDL_DestroyRenderer(sdlRenderer);
+  SDL_DestroyWindow(sdlWindow);
 end;
 
 procedure loadFont;

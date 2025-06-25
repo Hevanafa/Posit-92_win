@@ -43,7 +43,7 @@ end;
 
 procedure draw;
 begin
-  cls($6495ED);
+  cls($7B);
 
   { TODO: Your drawing code here }
 
@@ -55,8 +55,10 @@ begin
   print('Hello world!', 160-48, 120, 15);
   { drawMouse; }
 
+  {
   print('t: ' + f32str(t), 0, 0, 15);
   print('Now: ' + f32str(now), 0, 8, 15);
+  }
 
   flush;
 end;
@@ -77,6 +79,8 @@ begin
   freeImage(DosuEXE[0]);
   freeImage(DosuEXE[1]);
   freeFont;
+
+  initTextMode;
 
   SDL_Quit
 end;
