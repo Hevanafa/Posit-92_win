@@ -58,6 +58,16 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Timing"/>
       </Unit>
+      <Unit>
+        <Filename Value="units\renderer.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Renderer"/>
+      </Unit>
+      <Unit>
+        <Filename Value="units\events.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Events"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
