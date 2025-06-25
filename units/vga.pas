@@ -91,7 +91,7 @@ begin
     srcRect.w := 8;
     srcRect.h := 8;
 
-    destRect.x := x + a * 8;
+    destRect.x := x + (a - 1) * 8;
     destRect.y := y;
     destRect.w := 8;
     destRect.h := 8;

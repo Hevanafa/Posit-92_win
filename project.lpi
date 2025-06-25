@@ -68,6 +68,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Events"/>
       </Unit>
+      <Unit>
+        <Filename Value="units\conv.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Conv"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
