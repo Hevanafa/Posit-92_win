@@ -2,13 +2,9 @@ unit VGA;
 
 interface
 
-uses
-  SDL2,
-  Bitmap;
+uses SDL2, Bitmap;
 
 var
-  window: PSDL_Window;
-  renderer: PSDL_Renderer;
   font8x8: PImage;
 
 procedure initVGAMode;
@@ -22,18 +18,18 @@ procedure flush;
 
 implementation
 
-uses Bitmap;
+uses Renderer;
 
 
 procedure initVGAMode;
 begin
   if SDL_Init(SDL_INIT_VIDEO) < 0 then halt(1);
 
-  window := SDL_CreateWindow('Hello Posit-92 with SDL!', 100, 100, 320, 200, SDL_WINDOW_SHOWN);
-  if window = nil then halt(1);
+  sdlWindow := SDL_CreateWindow('Hello Posit-92 with SDL!', 100, 100, 320, 200, SDL_WINDOW_SHOWN);
+  if sdlWindow = nil then halt(1);
 
-  renderer := SDL_CreateRenderer(window, 1, 0);
-  if renderer = nil then halt(1);
+  sdlRenderer := SDL_CreateRenderer(sdlWindow, 1, 0);
+  if sdlRenderer = nil then halt(1);
 
   SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, 'nearest');
 end;
@@ -46,13 +42,13 @@ end;
 procedure cls(const colour: byte);
 begin
   { TODO: Provide the VGA colour table }
-  SDL_SetRenderDrawColor(renderer, $64, $95, $ED, SDL_ALPHA_OPAQUE);
-  SDL_RenderClear(renderer);
+  SDL_SetRenderDrawColor(sdlRenderer, $64, $95, $ED, SDL_ALPHA_OPAQUE);
+  SDL_RenderClear(sdlRenderer);
 end;
 
 procedure flush;
 begin
-  SDL_RenderPresent(renderer);
+  SDL_RenderPresent(sdlRenderer);
 end;
 
 procedure print(const text: string; const x, y: integer; const colour: byte);
@@ -73,7 +69,7 @@ begin
     destRect.w := 8;
     destRect.h := 8;
 
-    SDL_RenderCopy(renderer, font8x8^.texture, @srcRect, @destRect)
+    SDL_RenderCopy(sdlRenderer, font8x8^.texture, @srcRect, @destRect)
   end;
 end;
 

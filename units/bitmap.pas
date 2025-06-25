@@ -19,12 +19,14 @@ procedure freeImage(var image: PImage);
 
 implementation
 
+uses Renderer;
+
 procedure loadImage(var output: PImage; const filename: string);
 begin
   if output = nil then
     getMem(output, sizeof(TImage));
 
-  output^.texture := IMG_LoadTexture(renderer, PChar(filename));
+  output^.texture := IMG_LoadTexture(sdlRenderer, PChar(filename));
   SDL_QueryTexture(output^.texture, nil, nil, @output^.width, @output^.height);
 end;
 
@@ -39,7 +41,7 @@ begin
   dstRect.w := image^.width;
   dstRect.h := image^.height;
 
-  SDL_RenderCopy(renderer, image^.texture, nil, @dstRect);
+  SDL_RenderCopy(sdlRenderer, image^.texture, nil, @dstRect);
 end;
 
 procedure freeImage(var image: PImage);
