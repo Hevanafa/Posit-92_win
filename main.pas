@@ -58,7 +58,6 @@ begin
 
   spr(font8x8, 0, 0);
 
-  { TODO: Print hello world with VGA font }
   print('Hello world!', 160-48, 120, 15);
   { drawMouse; }
 
@@ -74,7 +73,7 @@ begin
   repeat
     update;
     draw;
-    SDL_Delay(16);
+    limit(60);
   until done;
 
   { TODO: Your cleanup code here }
