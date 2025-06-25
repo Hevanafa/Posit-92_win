@@ -73,6 +73,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Conv"/>
       </Unit>
+      <Unit>
+        <Filename Value="units\mouse.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Mouse"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
